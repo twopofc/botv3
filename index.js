@@ -31,9 +31,9 @@ const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
-            + 'FN:Affis Admin\n' 
+            + 'FN:Twop Admin\n' 
             + 'ORG: Pengembang XBot;\n' 
-            + 'TEL;type=CELL;type=VOICE;waid=14502330632:+1 450 233-0632\n' 
+            + 'TEL;type=CELL;type=VOICE;waid=5521989278431:+55 21 98927-8431' 
             + 'END:VCARD' 
 prefix = '!'
 blocked = []          
@@ -48,7 +48,7 @@ const bulan = arrayBulan[moment().format('MM') - 1]
 const config = {
     XBOT: '❉AmpibI❉', 
     instagram: 'https://instagram.com/twopofc', 
-    nomer: 'wa.me/14502330632',
+    nomer: 'wa.me/5521989278431',
     youtube: 'https://youtube.com/channel/UCGYLWtyT9IADYNUiK0uZiGg', 
     whatsapp: 'Comming soon', 
     tanggal: `TANGGAL: ${moment().format('DD')} ${bulan} ${moment().format('YYYY')}`,
@@ -167,7 +167,7 @@ client.on('group-participants-update', async (anu) => {
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = ["14502330632@s.whatsapp.net"] 
+			const ownerNumber = ["5521989278431@s.whatsapp.net"] 
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -397,8 +397,8 @@ client.on('group-participants-update', async (anu) => {
                          text: teks1,
                          contextInfo: {mentionedJid: [nomor]},
                      }
-                    client.sendMessage('14502330632@s.whatsapp.net', options, text, {quoted: mek})
-                    reply('Masalah telah di laporkan ke owner BOT, laporan palsu/main2 tidak akan ditanggapi.')
+                    client.sendMessage('5521989278431@s.whatsapp.net', options, text, {quoted: mek})
+                    reply('Problemas foram relatados ao proprietário do BOT, relatórios falsos não serão respondidos.')
                     break
                 case 'ssweb':
 					if (args.length < 1) return reply('Urlnya mana om')
@@ -553,7 +553,7 @@ client.on('group-participants-update', async (anu) => {
                 case 'text3d':
               	    if (args.length < 1) return reply('onde esta o texto irmao?')
                     teks = `${body.slice(8)}`
-                    if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 10 kalimat', text, {quoted: mek})
+                    if (teks.length > 10) return client.sendMessage(from, 'O texto é longo, no máximo 10 frases', text, {quoted: mek})
                     buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${teks}`, {method: 'get'})
                     client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
 			     	break
@@ -712,10 +712,10 @@ client.on('group-participants-update', async (anu) => {
 					break
 				case 'nsfwloli': 
 				    try {
-						if (!isNsfw) return reply('Maaf fitur ini belum di aktifkan/kesalahan server bot')
+						if (!isNsfw) return reply(Desculpe, este recurso não foi ativado')
 						res = await fetchJson(`https://api.lolis.life/random?nsfw=true`, {method: 'get'})
 						buffer = await getBuffer(res.url)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Jangan jadiin bahan buat comli om'})
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Não faça ingredientes para o tio comum'})
 					} catch (e) {
 						console.log(`Error :`, color(e,'red'))
 						reply(' *ERROR* ')
